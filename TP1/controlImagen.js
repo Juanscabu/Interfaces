@@ -5,7 +5,9 @@ let context = canvas.getContext('2d');
 let btnGuardar = document.querySelector('#btnGuardar');
 let imagenOriginal;
 input.addEventListener("change",cargarImagen,false);
-btnGuardar.addEventListener("click",save);
+btnGuardar.addEventListener("click",guardarImagen);
+let btnLimpiar = document.querySelector('#btnLimpiar');
+btnLimpiar.addEventListener("click",limpiaCanvas);
 
 
 function cargarImagen() {
@@ -54,6 +56,9 @@ function limpiaCanvas() {
 }
 
 limpiaCanvas();
+
+
+
 
 
 //On drag
@@ -161,3 +166,5 @@ function IniciarDibujo(){
   }
   */
 
+//HACER BOTON DE DESHACER 
+//guardar cambios en un array de instancias
