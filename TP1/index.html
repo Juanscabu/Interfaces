@@ -9,13 +9,28 @@
 <body>
     <canvas id="myCanvas" width="500" height="500"></canvas>
     <input id="input" type="file">
-    <button id="btnNegativo" type="button">Negativo</button>
-    <button id="btnGrises" type="button">Grises</button>
-    <button id="btnSepia" type="button">Sepia</button>
+    <select id="selectFiltro">
+    <option selected value="original">Original</option>
+    <option value="negativo">Negativo</option>
+    <option value="escalaGrises">Grises</option>
+    <option value="sepia">Sepia</option>
+    <option value="binario">Binario</option>
+    <option value="blur">Blur</option>
+    </select>
     <button id="btnGuardar" type="button">Guardar</button>
     <button id="btnLimpiar" type="button">Limpiar</button>
+    <button id="btnBorrar" type="button">Borrar</button>
+    <input id="inputColores" type="color">
+    <select id="selectPincel">
+        <option value="8">8</option>
+        <option selected value="10">10</option>
+        <option value="12">12</option>
+        <option value="14">14</option>
+        <option value="16">16</option>
+      </select>
 </body>
     <script	src="controlImagen.js">  </script>
     <script src="filtrosSimples.js"></script>
     <script src="controlDibujar.js"></script>
+    <script src="filtrosComplejos.js"></script>
 </html>

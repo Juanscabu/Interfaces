@@ -1,13 +1,39 @@
 let btnNegativo = document.querySelector('#btnNegativo');
 let btnSepia = document.querySelector('#btnSepia');
 let btnGrises = document.querySelector('#btnGrises');
-btnNegativo.addEventListener("click",negativo);
-btnSepia.addEventListener("click",sobel);
-btnGrises.addEventListener("click",escalaGrises);
+let selectFiltro = document.querySelector('#selectFiltro');
+selectFiltro.addEventListener("change", seleccionaFiltro, false);
+
+function seleccionaFiltro (event) {
+switch (event.target.value) {
+    case "original":
+        original();
+        break;
+    case "escalaGrises":
+      escalaGrises();
+      break;
+    case "sepia":
+     sepia();
+      break;
+    case "negativo":
+     negativo();
+      break;
+      case "binario":
+     binario();
+      break;
+      case "blur":
+     blur();
+      break;
+}
+}
+
+function original() {
+    let imageData = copiarImagen(context, imagenOriginal);
+    context.putImageData(imageData, 0, 0);
+}
 
 function escalaGrises() {
-    imageData = imagenOriginal;
-    console.log(imageData);
+    let imageData = copiarImagen(context, imagenOriginal);
     for(let j = 0; j < imageData.height; j++){
         for(let i = 0; i < imageData.width; i++){
             let index = (j * 4) * imageData.width + i * 4;
@@ -21,7 +47,7 @@ function escalaGrises() {
 }
 
 function negativo() {
-    imageData = imagenOriginal;
+    let imageData = copiarImagen(context, imagenOriginal);
     for(let j = 0; j < imageData.height; j++){
         for(let i = 0; i < imageData.width; i++){
             let index = (j * 4) * imageData.width + i * 4;
@@ -34,7 +60,7 @@ function negativo() {
 }
 
 function sepia() {
-    imageData = imagenOriginal;
+    let imageData = copiarImagen(context, imagenOriginal);
     for(let j = 0; j < imageData.height; j++){
         for(let i = 0; i < imageData.width; i++){
             let index = (j * 4) * imageData.width + i * 4;
@@ -47,40 +73,22 @@ function sepia() {
     context.putImageData(imageData, 0, 0);
 }
 
-function sobel() {
-    let horizontal = [-1,0,1,-2,0,2,-1,0,1];
-    let vertical = [-1,-2,-1,0,0,0,1,2,1];
-    imageData = imagenOriginal;
-    for(let x = 0; x < imageData.height; x++){
-        for(let y = 0; y < imageData.width; y++){
-            index=(x+y*imageData.width)*4;
-            vecinos=getVecinos(imageData,x,y);
-            let valorR=0; let valorG=0; let valorB=0;
-            for (let i = 0; i <=2; i++) {
-                for (let j = 0; j <=2; j++) {
-                    valorR+=vecinos[i][j].data[0]*kernel[i][j];
-                    valorG+=vecinos[i][j].data[1]*kernel[i][j];
-                    valorB+=vecinos[i][j].data[2]*kernel[i][j];
+function binario() {
+    let imageData = copiarImagen(context, imagenOriginal);
+        for(let j = 0; j < imageData.height; j++){
+            for(let i = 0; i < imageData.width; i++){
+                let index = (j * 4) * imageData.width + i * 4;
+                   if ( imageData.data[index] + imageData.data[index + 1] + imageData.data[index + 2] / 3 < 128) {
+                    imageData.data[index] = 0;
+                    imageData.data[index + 1] = 0; 
+                    imageData.data[index + 2] = 0;	
+                   }
+                   else {
+                    imageData.data[index] = 255;
+                    imageData.data[index + 1] = 255; 
+                    imageData.data[index + 2] = 255;	
+                   }
                 }
             }
-            result.data[index]=valorR;
-            result.data[index+1]=valorG;
-            result.data[index+2]=valorB;
-        }
-    }
-    ctx.putImageData(result,0,0);
-}
-
-function getVecinos (imageData,x,y) {
-    console.log(imageData);
-        var rowLimit = imageData.height-1;
-        var columnLimit = imageData.width-1;
-      
-        for(let i = Math.max(0, x-1); i <= Math.min(x+1, rowLimit); i++) {
-          for(let j = Math.max(0, y-1); j <= Math.min(y+1, columnLimit); j++) {
-            if(i !== x || j !== y) {
-              console.log(imageData[i]);
-            }
-          }
-        }
-      }
+            context.putImageData(imageData, 0, 0);
+ }
