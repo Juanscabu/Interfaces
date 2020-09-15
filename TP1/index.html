@@ -5,32 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Entregable 1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <canvas id="myCanvas" width="500" height="500"></canvas>
-    <input id="input" type="file">
-    <select id="selectFiltro">
-    <option selected value="original">Original</option>
-    <option value="negativo">Negativo</option>
-    <option value="escalaGrises">Grises</option>
-    <option value="sepia">Sepia</option>
-    <option value="binario">Binario</option>
-    <option value="blur">Blur</option>
-    </select>
-    <button id="btnGuardar" type="button">Guardar</button>
-    <button id="btnLimpiar" type="button">Limpiar</button>
-    <button id="btnBorrar" type="button">Borrar</button>
-    <input id="inputColores" type="color">
-    <select id="selectPincel">
+    <nav class="navbar navbar-light" style="background-color: #f5f8fa;">
+        <span class="navbar-brand mb-0 h1">Entregable 1</span>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-8">
+                <canvas class = "canvas" id="myCanvas" width="500" height="500"></canvas>
+                </canvas>
+           
+    </div>
+    <div class="col-4 container-tools">
+    <input class="row btn btn-secondary" id="input" type="file">
+    <div class="row"> 
+        <button class="btn btn-danger" id="btnGuardar" type="button">Guardar</button>
+    </div>
+   <div class="row"> 
+    <button class="btn btn-secondary" id="btnLimpiar" type="button">Limpiar</button>
+    </div>
+   
+    <input class="row" id="inputColores" type="color">
+    <select  class="row browser-default custom-select custom-select-lg mb-3" id="selectFiltro">
+        <option selected value="original">Original</option>
+        <option value="negativo">Negativo</option>
+        <option value="escalaGrises">Grises</option>
+        <option value="sepia">Sepia</option>
+        <option value="binario">Binario</option>
+        <option value="blur">Blur</option>
+        </select>
+        
+    <select class="row browser-default custom-select custom-select-lg mb-3" id="selectPincel">
         <option value="8">8</option>
         <option selected value="10">10</option>
         <option value="12">12</option>
         <option value="14">14</option>
         <option value="16">16</option>
       </select>
+    </div>
+</div>
 </body>
-    <script	src="controlImagen.js">  </script>
-    <script src="filtrosSimples.js"></script>
-    <script src="controlDibujar.js"></script>
-    <script src="filtrosComplejos.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="javascript/controlImagen.js"></script>
+    <script	src="javascript/controlDibujar.js">  </script>
+    <script src="javascript/filtrosComplejos.js"></script>
+    <script src="javascript/filtrosSimples.js"></script>
 </html>

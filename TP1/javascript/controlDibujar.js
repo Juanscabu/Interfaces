@@ -3,8 +3,6 @@ inputColor = document.querySelector("#inputColores");
 inputColor.addEventListener("input", setColor, false);
 selectPincel = document.querySelector("#selectPincel");
 selectPincel.addEventListener("change", setPincel, false);
-btnBorrar = document.querySelector("#btnBorrar");
-btnBorrar.addEventListener("click", setBorrar, false);
 
 canvas.addEventListener('mousedown', function(evt) {
   dibujar = true;
@@ -43,8 +41,3 @@ function setPincel (event) {
   context.lineWidth = event.target.value;
 }
 
-function setBorrar() {
-  context.fillStyle = "#E8E8E8";
-  context.fillRect(0, 0, canvas.width, canvas.height);
-  context.strokeStyle = "#E8E8E8";
-}

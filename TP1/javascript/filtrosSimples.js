@@ -22,7 +22,7 @@ switch (event.target.value) {
      binario();
       break;
       case "blur":
-     blur();
+        detectarBordes()
       break;
 }
 }
@@ -78,7 +78,7 @@ function binario() {
         for(let j = 0; j < imageData.height; j++){
             for(let i = 0; i < imageData.width; i++){
                 let index = (j * 4) * imageData.width + i * 4;
-                   if ( imageData.data[index] + imageData.data[index + 1] + imageData.data[index + 2] / 3 < 128) {
+                   if ( (imageData.data[index] + imageData.data[index + 1] + imageData.data[index + 2]) / 3 < 128) {
                     imageData.data[index] = 0;
                     imageData.data[index + 1] = 0; 
                     imageData.data[index + 2] = 0;	

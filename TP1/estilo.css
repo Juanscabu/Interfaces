@@ -1,0 +1,19 @@
+body {
+    background-color: #DFBABA;
+}
+
+.canvas {
+    margin-top: 2%;
+    border: solid 2px #38021d;
+}
+
+.container-tools {
+    margin-top: 2%;
+}
+
+.container-tools>.row {
+    margin-top: 4%;
+}
+
+
+

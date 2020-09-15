@@ -1,10 +1,9 @@
-//Ver si tengo que meterlas de vuelta a la function canvas
 let canvas = document.querySelector('#myCanvas');
-let input = document.querySelector('#input');
 let context = canvas.getContext('2d');
-let btnGuardar = document.querySelector('#btnGuardar');
 let imagenOriginal;
+let input = document.querySelector('#input');
 input.addEventListener("change",cargarImagen,false);
+let btnGuardar = document.querySelector('#btnGuardar');
 btnGuardar.addEventListener("click",guardarImagen);
 let btnLimpiar = document.querySelector('#btnLimpiar');
 btnLimpiar.addEventListener("click",limpiaCanvas);
@@ -22,7 +21,7 @@ function cargarImagen() {
         image.src = content;
 
         image.onload = function () {
-          canvas.width = 500;
+          canvas.width = 800;
           canvas.height = 500;
           let imageAspectRatio = (1.0 * this.height) / this.width;
           let imageScaledWidth = canvas.width;
@@ -48,6 +47,8 @@ function cargarImagen() {
 
 
 function limpiaCanvas() {
+    canvas.width = 800;
+    canvas.height = 500;
     context.fillStyle = "#E8E8E8";
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.lineWidth = 8;
@@ -74,48 +75,3 @@ function copiarImagen(context, imagenOriginal) {
 }
 
 limpiaCanvas();
-
-
-
-
-
-
-//escalar imagen 
-/*
-function borrarCnv5(){
-    cnv5.clearRect(0,0,canvas5.width,canvas5.height);
-}
-function escalarMas(){
-    borrarCnv5();
-    cnv5.scale(3/2,3/2);
-    trazarCnv5();
-}
-function escalarMenos(){
-    borrarCnv5();
-    cnv5.scale(2/3,2/3);
-    trazarCnv5();
-}
-function rotarMas(){
-    borrarCnv5();
-    cnv5.rotate(Math.PI/32);
-    trazarCnv5();
-}
-function rotarMenos(){
-    borrarCnv5();
-    cnv5.rotate(-Math.PI/32);
-    trazarCnv5();
-}
-function trasladarMas(){
-    borrarCnv5();
-    cnv5.translate(5,5);
-    trazarCnv5();
-}
-function trasladarMenos(){
-    borrarCnv5();
-    cnv5.translate(-5,-5);
-    trazarCnv5();
-
-    */
-
-//HACER BOTON DE DESHACER 
-//guardar cambios en un array de instancias
