@@ -3,6 +3,8 @@ let btnSepia = document.querySelector('#btnSepia');
 let btnGrises = document.querySelector('#btnGrises');
 let selectFiltro = document.querySelector('#selectFiltro');
 selectFiltro.addEventListener("change", seleccionaFiltro, false);
+let rangoBrillo = document.querySelector('#brillo');
+rangoBrillo.addEventListener("change",brillo,false);
 
 function seleccionaFiltro (event) {
 switch (event.target.value) {
@@ -22,7 +24,7 @@ switch (event.target.value) {
      binario();
       break;
       case "blur":
-        detectarBordes()
+        blur();
       break;
 }
 }
@@ -92,3 +94,26 @@ function binario() {
             }
             context.putImageData(imageData, 0, 0);
  }
+
+ function brillo() {
+    let imageData = copiarImagen(context, imagenOriginal);
+    let intencidad = document.querySelector("#brillo").value;
+    for (let y = 0; y < imageData.height; y++) {
+        for (let x = 0; x < imageData.width; x++) {
+            index = (x + y * imageData.width) * 4;
+            imageData.data[index + 0] = truncar(imageData.data[index + 0] + 0.5 * intencidad);
+            imageData.data[index + 1] = truncar(imageData.data[index + 1] + 0.5 * intencidad);
+            imageData.data[index + 2] = truncar(imageData.data[index + 2] + 0.5 * intencidad);
+        }
+    }
+    context.putImageData(imageData, 0, 0);
+}
+
+function truncar(valor) {
+    if (valor < 0)
+        return 0;
+    if (valor > 255)
+        return 255;
+    else 
+    return valor;
+}

@@ -22,13 +22,12 @@
     <div class="col-4 container-tools">
     <input class="row btn btn-secondary" id="input" type="file">
     <div class="row"> 
-        <button class="btn btn-danger" id="btnGuardar" type="button">Guardar</button>
+        <button class="btn btn-danger" id="btnGuardar" type="button">Guardar Imagen</button>
     </div>
    <div class="row"> 
-    <button class="btn btn-secondary" id="btnLimpiar" type="button">Limpiar</button>
+    <button class="btn btn-secondary" id="btnLimpiar" type="button">Limpiar Canvas</button>
     </div>
-   
-    <input class="row" id="inputColores" type="color">
+    <input class="row input-group mb-3" id="inputColores" type="color">
     <select  class="row browser-default custom-select custom-select-lg mb-3" id="selectFiltro">
         <option selected value="original">Original</option>
         <option value="negativo">Negativo</option>
@@ -45,6 +44,13 @@
         <option value="14">14</option>
         <option value="16">16</option>
       </select>
+      <div class="row">
+      <span class="label label-default">Saturacion</span>
+      <input type="range"  id="saturacion" min="0" max="255" value="128">
+    </div>
+      <div class="row">
+      <span class="label label-default">Brillo</span>
+      <input type="range"  id="brillo" min="0" max="255" value="128">
     </div>
 </div>
 </body>
