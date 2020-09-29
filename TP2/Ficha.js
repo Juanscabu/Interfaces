@@ -16,9 +16,6 @@ class Ficha {
         } else {
             ctx.drawImage(imgFichaRoja, this.x - this.radio, this.y - this.radio);
         }
-        
-        ctx.fill();
-        ctx.closePath()
     }
 
     contienePunto (x,y) {

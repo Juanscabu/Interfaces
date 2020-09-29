@@ -30,8 +30,9 @@ let fichaClickeada = null;
     let tamaño = tablero.getTamañoImagenRelleno();
     let columna = 1;
     let calculo = 0;
+    let valorY = tablero.getTamañoImagenRelleno();
     moverFicha = false;
-    if (fichaClickeada.getJugador() != tablero.getTurno()) {
+    if (fichaClickeada.getJugador() != tablero.getTurno() && fichaClickeada.getY() <= valorY) {
         while (columna < tablero.getDimension()+1 && !fichaClickeada.estaEnTablero()) {
         anterior = actual;
         actual = columna * tamaño;
@@ -93,13 +94,28 @@ function reiniciarJuego() {
 
 function cargafichas () {
   cantFichas = tablero.getDimension() * tablero.getDimension();
+  let distribucionXAzules = 600
+  let distribucionXRojas = 600
+  let distribucionYAzules = 100;
+  let distribucionYRojas = 300;
   for (let index = 0; index < cantFichas; index++) {
+    
     if(index < cantFichas/2) {
-     let ficha = new Ficha(600,140,1);
+      distribucionXAzules = distribucionXAzules + 10;
+      if (distribucionXAzules > 700) {
+        distribucionXAzules = 600;
+        distribucionYAzules = distribucionYAzules + 50;
+      } 
+     let ficha = new Ficha(distribucionXAzules,distribucionYAzules,1);
      fichas.push(ficha);
     }
      else {
-     let ficha = new Ficha(600,240,2); //cambiar a random
+     distribucionXRojas = distribucionXRojas + 10;
+     if (distribucionXRojas > 700) {
+      distribucionXRojas = 600;
+      distribucionYRojas = distribucionYRojas + 50;
+    } 
+     let ficha = new Ficha(distribucionXRojas,distribucionYRojas,2);
      fichas.push(ficha);
      }  
 }
@@ -107,9 +123,9 @@ function cargafichas () {
 
 function cambiarJugador() {
   if (tablero.getTurno() == 2) 
-  jugador.innerHTML = "Turno jugador: 1";
+  jugador.innerHTML = "Turno jugador: Azul";
     else 
-      jugador.innerHTML = "Turno jugador: 2";
+      jugador.innerHTML ="Turno jugador: Rojo";
 }
 
 function cambiarDimension () {

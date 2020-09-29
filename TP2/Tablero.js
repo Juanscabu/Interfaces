@@ -14,13 +14,10 @@ class Tablero {
         }
 
     draw() {
-        let d = this.dimensionTablero;
-        let fondo = document.querySelector('#fondo');
         let  relleno = document.querySelector('#relleno');
-          //  ctx.drawImage(fondo,0,0);
-        for (let i = 0; i < d; i++) {
+        for (let i = 0; i < this.dimensionTablero; i++) {
             let  y = i *  this.tamañoImagenRelleno;
-            for (let j = 0; j < d; j++) {
+            for (let j = 0; j < this.dimensionTablero; j++) {
                 let  x = j *  this.tamañoImagenRelleno;
                 ctx.drawImage(relleno, x, y ,  this.tamañoImagenRelleno , this.tamañoImagenRelleno);       
             }
