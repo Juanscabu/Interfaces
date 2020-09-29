@@ -3,6 +3,7 @@ let jugador = document.querySelector("#jugador");
 reiniciar.addEventListener('click',reiniciarJuego);
 let dimensionTablero = document.querySelector("#dimensionTablero");
 dimensionTablero.addEventListener("change", cambiarDimension, false);
+let fondo = document.querySelector('#fondo');
 
 let xInicial = 0;
 let yInicial = 0;
@@ -77,10 +78,12 @@ function buscaFicha (x,y) {
 
 function actualiza() {
   limpiaCanvas();
+  ctx.drawImage(fondo, 0, 0 , 800 , 800); 
     for (let i = 0; i < fichas.length; i++) {
         fichas[i].dibujarse();
       }
       tablero.draw();
+     
 }
 
 function reiniciarJuego() {
@@ -89,6 +92,7 @@ function reiniciarJuego() {
   cargafichas();
   tablero.reiniciarLogica();
   tablero.setGanador(false);
+  tablero.setTurno(0);
   actualiza();
 }
 

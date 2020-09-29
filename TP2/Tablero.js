@@ -72,6 +72,10 @@ class Tablero {
         return this.turno;
     }
 
+    setTurno(turno) {
+        this.turno = turno;
+    }
+
     tieneGanador() {
         return this.ganador;
     }
