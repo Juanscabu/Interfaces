@@ -1,7 +1,7 @@
 let pagina = document.querySelector(".pagina");
 let parallax = document.querySelector(".parallax");
+
 setInterval(function(){
-  console.log("entro");
   pagina.classList.remove("hidden");
   parallax.classList.add("hidden");
 }, 3000);

@@ -36,7 +36,7 @@ let ringer = {
     };
     
 
-
+    $r.cvs.classList.add("hidden");
     $r.cvs.setAttribute('width',$r.size.w);           
     $r.cvs.setAttribute('height',$r.size.h);
     $r.ctx = $r.cvs.getContext('2d');
@@ -104,4 +104,10 @@ let ringer = {
   }
 }
 
+
 ringer.init();
+
+setInterval(function(){
+  ringer.ctx.canvas.classList.remove("hidden");
+}, 3000);
+
